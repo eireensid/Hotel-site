@@ -3,35 +3,69 @@
       <div class="container">
           <div class="row no-gutters">
               <div class="col-4">
-                  <label for="dates">даты пребывания в отеле</label>
-                  <input type="text" class="form-control" id="dates" placeholder="19 авг - 23 авг">
-                  <label for="guests">гости</label>
-                  <input type="text" class="form-control" id="guests" placeholder="3 гостя, 1 младенец">
-                  <label for="ex2">диапазон цены</label><br>
-                  <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/><br>
-                  <label for="more">особые пожелания</label><br>
-                  <input type="checkbox" id="more">Можно курить<br>
-                  <input type="checkbox" id="more">Можно с питомцами<br>
-                  <input type="checkbox" id="more">Можно пригласить гостей (до 10 человек)<br>
-                  <label for="availability">доступность</label><br>
-                  <input type="checkbox" id="availability">Широкий коридор<br>
-                    Ширина коридоров в номере не менее 91 см.<br>
-                  <input type="checkbox" id="availability">Помощник для инвалидов<br>
-                    На 1 этаже вас встретит специалист  и проводит до номера.<br>
-                  <label for="comfort">удобства номера</label>
-                  <input type="text" class="form-control" id="comfort">
-                  <label for="addition">дополнительные удобства</label><br>
-                  <input type="checkbox" id="addition">Завтрак<br>
-                  <input type="checkbox" id="addition">Письменный стол<br>
-                  <input type="checkbox" id="addition">Стул для кормления<br>
-                  <input type="checkbox" id="addition">Кроватка<br>
-                  <input type="checkbox" id="addition">Телевизор<br>
-                  <input type="checkbox" id="addition">Шампунь<br>
+                  <label class="label" for="dates">даты пребывания в отеле</label>
+                  <input type="text" class="form-control text-input" id="dates" placeholder="19 авг - 23 авг">
+                  <img class="expand_more" src="assets/img/expand_more.svg"/>
+                  <label class="label" for="guests">гости</label>
+                  <input type="text" class="form-control text-input" id="guests" placeholder="3 гостя, 1 младенец">
+                  <img class="expand_more_1" src="assets/img/expand_more.svg"/>
+                  <label class="label-margin label" for="ex2">диапазон цены</label><span class="price-range">5 000₽ - 10 000₽</span><br>
+                  <input id="ex2" type="text" class="span2" value="5 000₽ - 10 000₽" data-slider-min="0" data-slider-max="15000" data-slider-step="10" data-slider-value="[5000,10000]"/><br>
+                  <p class="price">Стоимость за сутки пребывания в номере</p>
+                  <label class="label-margin label" for="more">особые пожелания</label><br>
+                  <div class="center center-margin">
+                    <input class="checkbox" type="checkbox" id="smoke"><label class="checkbox-label" for="smoke">Можно курить</label>
+                  </div>
+                  <div class="center center-margin">
+                    <input class="checkbox" type="checkbox" id="pets"><label class="checkbox-label" for="pets">Можно с питомцами</label>
+                  </div>
+                  <div class="center">
+                    <input class="checkbox" type="checkbox" id="guest"><label class="checkbox-label" for="guest">Можно пригласить гостей (до 10 человек)</label>
+                  </div>
+                  <label class="label label-margin" for="availability">доступность</label><br>
+                  <div class="center">
+                    <input class="checkbox" type="checkbox" id="corridor"><label class="checkbox-label checkbox-label-black" for="corridor">Широкий коридор</label>
+                  </div>
+                    <span class="checkbox-label checkbox-label-small">Ширина коридоров в номере не менее 91 см.</span><br>
+                  <div class="center">
+                    <input class="checkbox" type="checkbox" id="help"><label class="checkbox-label checkbox-label-black" for="help">Помощник для инвалидов</label>
+                  </div>
+                    <span class="checkbox-label checkbox-label-small">На 1 этаже вас встретит специалист и проводит до номера.</span><br>
+                  <label class="label label-margin-top" for="comfort">удобства номера</label>
+                  <input type="text" class="form-control text-input" id="comfort">
+                  <img class="expand_more_2" src="assets/img/expand_more_black.svg"/>
+                  <label class="label label-margin label-margin-right" for="addition">дополнительные удобства</label>
+                  <img @click="additionVisible = !additionVisible" src="assets/img/expand_more.svg"/>
+                  <div v-show="additionVisible">
+                    <div class="center center-margin">
+                      <input class="checkbox" type="checkbox" id="breakfast"><label class="checkbox-label" for="breakfast">Завтрак</label>
+                    </div>
+                    <div class="center center-margin">
+                      <input class="checkbox" type="checkbox" id="desk"><label class="checkbox-label" for="desk">Письменный стол</label>
+                    </div>
+                    <div class="center center-margin">
+                      <input class="checkbox" type="checkbox" id="stool"><label class="checkbox-label" for="stool">Стул для кормления</label>
+                    </div>
+                    <div class="center center-margin">
+                      <input class="checkbox" type="checkbox" id="bed"><label class="checkbox-label" for="bed">Кроватка</label>
+                    </div>
+                    <div class="center center-margin">
+                      <input class="checkbox" type="checkbox" id="tv"><label class="checkbox-label" for="tv">Телевизор</label>
+                    </div>
+                    <div class="center">
+                      <input class="checkbox" type="checkbox" id="shampoo"><label class="checkbox-label" for="shampoo">Шампунь</label>
+                    </div>
+                  </div>
               </div>
               <div class="col-8">
                 <div class="container">
                   <div class="row no-gutters">
-                    <div v-for="(r, ind) in rooms" :key="'room' + ind" class="col-4 mb-4">
+                    <div class="col">
+                      <h2 class="rooms">Номера, которые мы для вас подобрали</h2>
+                    </div>
+                  </div>
+                  <div class="row no-gutters">
+                    <div v-for="(r, ind) in rooms" :key="'room' + ind" class="col-4 mb-4 card-padding">
                       <AppartmentCard :imageSrc="r.imageSrc" :appartmentNumber="r.appartmentNumber" :isLuxe="r.isLuxe" :price="r.price" :starsCount="r.starsCount" :feedbackCount="r.feedbackCount"/>
                     </div>
                   </div>
@@ -52,6 +86,7 @@ export default {
   name: 'RoomsList',
   data () {
     return {
+      additionVisible: false,
       rooms: [
         {
           imageSrc: './assets/img/image.png',
@@ -164,5 +199,98 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/scss/utils/vars";
+  // header {
+  //   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  // }
+  .label {
+    margin-top: 20px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: $lessFontSize;
+    line-height: 15px;
+  }
+  .text-input {
+    width: 80%;
+    position: relative;
+  }
+  div.center {
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+  div.center-margin {
+    margin-bottom: 10px;
+  }
+  .checkbox {
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 1.25em;
+    height: 1.25em;
+    margin-right: 10px;
+  }
+  .checkbox:checked {
+    border: 1px solid #BC9CFF;
+  }
+  .checkbox-label {
+    color: $darkShade50;
+    font-size: $mainFontSize;
+    line-height: 1.125em;
+    padding-top: 2.8px;
+  }
+  .checkbox-label-small {
+    font-size: $lessFontSize;
+    line-height: $mainFontSize;
+    margin-left: 25px;
+    max-width: 200px;
+  }
+  .checkbox-label-black {
+    font-weight: bold;
+    color: $darkShade75;
+  }
+  img.expand_more {
+    position: absolute;
+    right: 23%;
+    bottom: 93.7%;
+  }
+  img.expand_more_1 {
+    position: absolute;
+    right: 23%;
+    bottom: 86.3%;
+  }
+  img.expand_more_2 {
+    position: absolute;
+    right: 23%;
+    bottom: 40.5%;
+  }
+  .label-margin {
+    margin-top: 30px;
+    margin-bottom: 16px;
+  }
+  .label-margin-top {
+    margin-top: 30px;
+  }
+  .label-margin-right {
+    margin-right: 4%;
+  }
+  .price-range {
+    margin-left: 146px;
+    color: rgba(31, 32, 65, 0.5);
+  }
+  .price {
+    color: rgba(31, 32, 65, 0.5);
+  }
 
+  h2.rooms {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: $h2FontWeight;
+    font-family: $titleFont;
+    color: $darkShade100;
+    font-size: 1.5em;
+  }
+  .card-padding {
+    padding-right: 15px;
+  }
 </style>

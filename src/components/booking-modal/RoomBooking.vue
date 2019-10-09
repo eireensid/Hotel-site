@@ -177,10 +177,10 @@ label {
   font-size: $lessFontSize;
   line-height: 15px;
 }
-input::placeholder {
-  color: $darkShade75;
-  font-size: 0.75em;
-}
+// input::placeholder {
+//   color: $darkShade75;
+//   font-size: 0.75em;
+// }
 .room-booking {
   background: #fff;
   position: absolute;
