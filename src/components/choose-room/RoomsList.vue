@@ -4,12 +4,16 @@
           <div class="row no-gutters">
               <div class="col-4">
                   <label class="label" for="dates">даты пребывания в отеле</label>
-                  <input type="text" class="form-control text-input" id="dates" placeholder="19 авг - 23 авг">
-                  <img class="expand_more" src="assets/img/expand_more.svg"/>
+                  <div class="input">
+                    <input type="text" class="form-control text-input" id="dates" placeholder="19 авг - 23 авг">
+                    <img class="expand_more" src="assets/img/expand_more.svg"/>
+                  </div>
                   <label class="label" for="guests">гости</label>
-                  <input type="text" class="form-control text-input" id="guests" placeholder="3 гостя, 1 младенец">
-                  <img class="expand_more_1" src="assets/img/expand_more.svg"/>
-                  <label class="label-margin label" for="ex2">диапазон цены</label><span class="price-range">5 000₽ - 10 000₽</span><br>
+                  <div class="input">
+                    <input type="text" class="form-control text-input" id="guests" placeholder="3 гостя, 1 младенец">
+                    <img class="expand_more_1" src="assets/img/expand_more.svg"/>
+                  </div>
+                  <label class="label-margin label" for="ex2">диапазон цены</label><span class="price-range">{{sliderValue1}}₽ - {{sliderValue2}}₽</span><br>
                   <input id="ex2" type="text" class="span2" value="5 000₽ - 10 000₽" data-slider-min="0" data-slider-max="15000" data-slider-step="10" data-slider-value="[5000,10000]"/><br>
                   <p class="price">Стоимость за сутки пребывания в номере</p>
                   <label class="label-margin label" for="more">особые пожелания</label><br>
@@ -17,7 +21,7 @@
                     <input class="checkbox" type="checkbox" id="smoke"><label class="checkbox-label" for="smoke">Можно курить</label>
                   </div>
                   <div class="center center-margin">
-                    <input class="checkbox" type="checkbox" id="pets"><label class="checkbox-label" for="pets">Можно с питомцами</label>
+                    <input class="checkbox" type="checkbox" checked id="pets"><label class="checkbox-label" for="pets">Можно с питомцами</label>
                   </div>
                   <div class="center">
                     <input class="checkbox" type="checkbox" id="guest"><label class="checkbox-label" for="guest">Можно пригласить гостей (до 10 человек)</label>
@@ -32,8 +36,10 @@
                   </div>
                     <span class="checkbox-label checkbox-label-small">На 1 этаже вас встретит специалист и проводит до номера.</span><br>
                   <label class="label label-margin-top" for="comfort">удобства номера</label>
-                  <input type="text" class="form-control text-input" id="comfort">
-                  <img class="expand_more_2" src="assets/img/expand_more_black.svg"/>
+                  <div class="input">
+                    <input type="text" class="form-control text-input" id="comfort">
+                    <img class="expand_more_2" src="assets/img/expand_more_black.svg"/>
+                  </div>
                   <label class="label label-margin label-margin-right" for="addition">дополнительные удобства</label>
                   <img @click="additionVisible = !additionVisible" src="assets/img/expand_more.svg"/>
                   <div v-show="additionVisible">
@@ -69,8 +75,21 @@
                       <AppartmentCard :imageSrc="r.imageSrc" :appartmentNumber="r.appartmentNumber" :isLuxe="r.isLuxe" :price="r.price" :starsCount="r.starsCount" :feedbackCount="r.feedbackCount"/>
                     </div>
                   </div>
+                  <div class="row no-gutters">
+                    <div class="col d-flex justify-content-center">
+                      <span class="first">1</span> 2 3 ... 12
+                      <img class="arrow-pagination" src="assets/img/arrow_pagination.svg"/>
+                    </div>
+                  </div>
                 </div>
               </div>
+          </div>
+      </div>
+      <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <hr>
+            </div>
           </div>
       </div>
   </div>
@@ -87,6 +106,8 @@ export default {
   data () {
     return {
       additionVisible: false,
+      sliderValue1: 5000,
+      sliderValue2: 10000,
       rooms: [
         {
           imageSrc: './assets/img/image.png',
@@ -189,6 +210,10 @@ export default {
   },
   mounted () {
     var slider = new Slider('#ex2', {})
+    slider.on("slide", (sliderValues) => {
+      this.sliderValue1 = sliderValues[0]
+      this.sliderValue2 = sliderValues[1]
+    })
   },
   components: {
     AppartmentCard
@@ -199,9 +224,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../assets/scss/utils/vars";
-  // header {
-  //   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-  // }
   .label {
     margin-top: 20px;
     margin-bottom: 4px;
@@ -212,7 +234,6 @@ export default {
   }
   .text-input {
     width: 80%;
-    position: relative;
   }
   div.center {
     display: flex;
@@ -230,8 +251,20 @@ export default {
     height: 1.25em;
     margin-right: 10px;
   }
-  .checkbox:checked {
+  input[type="checkbox"]:checked {
+    display: none;
+  }
+  input:checked + label:before {
+    content: url(/assets/img/Vector.png);
     border: 1px solid #BC9CFF;
+    box-sizing: border-box;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+    padding-left: 1px;
+    padding-right: 2px;
+    // padding-top: 1px;
+    margin-right: 10px;
   }
   .checkbox-label {
     color: $darkShade50;
@@ -249,20 +282,23 @@ export default {
     font-weight: bold;
     color: $darkShade75;
   }
+  .input {
+    position: relative;
+  }
   img.expand_more {
     position: absolute;
     right: 23%;
-    bottom: 93.7%;
+    bottom: 35%;
   }
   img.expand_more_1 {
     position: absolute;
     right: 23%;
-    bottom: 86.3%;
+    bottom: 35%;
   }
   img.expand_more_2 {
     position: absolute;
     right: 23%;
-    bottom: 40.5%;
+    bottom: 35%;
   }
   .label-margin {
     margin-top: 30px;
@@ -292,5 +328,30 @@ export default {
   }
   .card-padding {
     padding-right: 15px;
+  }
+
+  .container-fluid {
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .first {
+    background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
+    border-radius: 50%;
+    // padding: 10px;
+    font-weight: bold;
+    font-size: $lessFontSize;
+    color: #fff;
+    // padding-right: 17px;
+    // padding-left: 17px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .arrow-pagination {
+    background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
+    border-radius: 50%;
+    padding: 10px;
   }
 </style>

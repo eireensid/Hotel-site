@@ -1,6 +1,6 @@
 <template>
   <div>
-    <headerComponent/>
+    <headerComponent :isShadow="true"/>
     <RoomsList/>
     <footerComponent/>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header :style="shadowComputedStyle">
     <div class="container">
       <div class="row no-gutters">
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm logo">
@@ -39,7 +39,17 @@
 
 <script>
 export default {
-  name: 'headerComponent'
+  name: 'headerComponent',
+  props: ['isShadow'],
+  computed: {
+    shadowComputedStyle () {
+      let res = {}
+      if (this.isShadow) {
+        res.boxShadow = "0px 10px 20px rgba(31, 32, 65, 0.05)"
+      }
+      return res
+    }
+  }
 }
 </script>
 
