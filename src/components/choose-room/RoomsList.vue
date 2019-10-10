@@ -35,11 +35,7 @@
                     <input class="checkbox" type="checkbox" id="help"><label class="checkbox-label checkbox-label-black" for="help">Помощник для инвалидов</label>
                   </div>
                     <span class="checkbox-label checkbox-label-small">На 1 этаже вас встретит специалист и проводит до номера.</span><br>
-                  <label class="label label-margin-top" for="comfort">удобства номера</label>
-                  <div class="input">
-                    <input type="text" class="form-control text-input" id="comfort">
-                    <img class="expand_more_2" src="assets/img/expand_more_black.svg"/>
-                  </div>
+                  <RoomComfort />
                   <label class="label label-margin label-margin-right" for="addition">дополнительные удобства</label>
                   <img @click="additionVisible = !additionVisible" src="assets/img/expand_more.svg"/>
                   <div v-show="additionVisible">
@@ -75,10 +71,15 @@
                       <AppartmentCard :imageSrc="r.imageSrc" :appartmentNumber="r.appartmentNumber" :isLuxe="r.isLuxe" :price="r.price" :starsCount="r.starsCount" :feedbackCount="r.feedbackCount"/>
                     </div>
                   </div>
-                  <div class="row no-gutters">
-                    <div class="col d-flex justify-content-center">
-                      <span class="first">1</span> 2 3 ... 12
+                  <div class="row no-gutters pagination-top">
+                    <div class="col d-flex justify-content-center align-items-center">
+                      <span class="first">1</span><span class="margin-right">2</span><span class="margin-right">3</span><span class="margin-right">...</span><span class="margin-right-last">12</span>
                       <img class="arrow-pagination" src="assets/img/arrow_pagination.svg"/>
+                    </div>
+                  </div>
+                  <div class="row no-gutters pagination-bottom">
+                    <div class="col d-flex justify-content-center align-items-center mt-2">
+                      <p>1 - 12 из 100+ вариантов аренды</p>
                     </div>
                   </div>
                 </div>
@@ -97,6 +98,7 @@
 
 <script>
 import AppartmentCard from './AppartmentCard.vue'
+import RoomComfort from './RoomComfortInput.vue'
 
 
 var Slider = require("bootstrap-slider")
@@ -216,7 +218,7 @@ export default {
     })
   },
   components: {
-    AppartmentCard
+    AppartmentCard, RoomComfort
   } 
 }
 
@@ -338,20 +340,32 @@ export default {
   .first {
     background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
     border-radius: 50%;
-    // padding: 10px;
     font-weight: bold;
     font-size: $lessFontSize;
+    line-height: $lessFontSize;
     color: #fff;
-    // padding-right: 17px;
-    // padding-left: 17px;
     width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 10px;
+  }
+  span.margin-right {
+    margin-right: 15px;
+  }
+  span.margin-right-last {
+    margin-right: 10px;
   }
   .arrow-pagination {
     background: linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%);
     border-radius: 50%;
     padding: 10px;
+  }
+  .pagination-bottom {
+    margin-bottom: 60px;
+  }
+  .pagination-top {
+    margin-top: 30px;
   }
 </style>

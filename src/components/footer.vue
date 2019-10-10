@@ -151,9 +151,9 @@ hr {
 .footer-bottom {
   padding: 0 9.7%;
 }
-.logo-bottom {
-  padding-bottom: 20px;
-}
+// .logo-bottom {
+//   padding-bottom: 20px;
+// }
 .nav-bottom a {
   letter-spacing: 0;
   line-height: 17px;
