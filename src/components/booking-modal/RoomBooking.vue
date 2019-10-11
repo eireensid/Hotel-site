@@ -18,7 +18,7 @@
       </div>
       <GuestsInput />
       <div class="row no-gutters">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 pt-4">
           <button class="btn book-btn">
             <span>Подобрать номер</span>
             <img src="/assets/img/arrow_forward_white.svg">
