@@ -1,20 +1,20 @@
 <template>
   <div>
     <headerComponent :isShadow="false"/>
-    <mainComponent/>
+    <RoomsList/>
     <footerComponent/>
   </div>
 </template>
 
 <script>
 import headerComponent from './header.vue'
-import mainComponent from './main.vue'
+import RoomsList from './choose-room/RoomsList.vue'
 import footerComponent from './footer.vue'
 
 export default {
   name: 'example-component',
   components: {
-    headerComponent, mainComponent, footerComponent
+    headerComponent, RoomsList, footerComponent
   }
 }
 </script>

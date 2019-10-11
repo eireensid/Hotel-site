@@ -8,11 +8,7 @@
                     <input type="text" class="form-control text-input" id="dates" placeholder="19 авг - 23 авг">
                     <img class="expand_more" src="assets/img/expand_more.svg"/>
                   </div>
-                  <label class="label" for="guests">гости</label>
-                  <div class="input">
-                    <input type="text" class="form-control text-input" id="guests" placeholder="3 гостя, 1 младенец">
-                    <img class="expand_more_1" src="assets/img/expand_more.svg"/>
-                  </div>
+                  <GuestsInput class="text-input" />
                   <label class="label-margin label" for="ex2">диапазон цены</label><span class="price-range">{{sliderValue1}}₽ - {{sliderValue2}}₽</span><br>
                   <input id="ex2" type="text" class="span2" value="5 000₽ - 10 000₽" data-slider-min="0" data-slider-max="15000" data-slider-step="10" data-slider-value="[5000,10000]"/><br>
                   <p class="price">Стоимость за сутки пребывания в номере</p>
@@ -98,6 +94,7 @@
 
 <script>
 import AppartmentCard from './AppartmentCard.vue'
+import GuestsInput from '../booking-modal/GuestsInput.vue'
 import RoomComfort from './RoomComfortInput.vue'
 
 
@@ -218,7 +215,7 @@ export default {
     })
   },
   components: {
-    AppartmentCard, RoomComfort
+    AppartmentCard, RoomComfort, GuestsInput
   } 
 }
 
@@ -265,7 +262,6 @@ export default {
     height: 20px;
     padding-left: 1px;
     padding-right: 2px;
-    // padding-top: 1px;
     margin-right: 10px;
   }
   .checkbox-label {

@@ -202,6 +202,7 @@ h5 {
 }
 .text-color {
   color: rgba(31, 32, 65, 0.75);
+  font-size: $mainFontSize
 }
 .plus-minus-bottom {
   margin-bottom: 7px;

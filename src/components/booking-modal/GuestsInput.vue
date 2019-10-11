@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="row no-gutters">
-        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 pb-4">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
           <h5 for="guests">Гости</h5>
           <div class="form-guests" :style="guestsFormStyle">
             <p class="text-color" v-if="adultsCount == 0 && childrenCount == 0 && babiesCount == 0">Сколько гостей</p>
@@ -162,6 +162,7 @@ h5 {
 }
 .text-color {
   color: rgba(31, 32, 65, 0.75);
+  font-size: $mainFontSize;
 }
 .plus-minus-bottom {
   margin-bottom: 7px;
