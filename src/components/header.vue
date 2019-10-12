@@ -145,4 +145,28 @@ li {
   color: white;
   background: linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%);
 }
+
+@media (max-width: 1280px) {
+  .btn-purple {
+    margin-right: 10px;
+  }
+}
+@media (max-width: 1156px) {
+  .btn-purple {
+    margin-top: 0;
+  }
+  .btn-white {
+    margin-right: 0;
+  }
+}
+@media (max-width: 1126px) {
+  .btn-purple {
+    margin-right: 5px;
+  }
+}
+@media (max-width: 1112px) {
+  .button {
+    font-size: $lessFontSize;
+  }
+}
 </style>

@@ -113,6 +113,7 @@ export default {
   min-height: 40px; /* Минимальная высота */
   border-radius: 4px;
   display: flex;
+  position: relative;
 }
 input[type="text"] {
   border: none; /* Убираем рамку */
@@ -128,7 +129,7 @@ input[type="submit"] {
   border: none; /* Убираем рамку */
   background: url(/assets/img/arrow_forward.svg) no-repeat 50% 50%; /* Параметры фона */
   position: absolute;
-  right: 10%;
+  right: 2%;
 }
 input::placeholder {
   color: $darkShade25;

@@ -7,11 +7,11 @@
         </div>
       </div>
       <div class="row no-gutters">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pr-4">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pr-2">
           <label for="arrive">Прибытие</label>
           <input type="text" class="form-control datepicker-here" id="arrive" data-range="true" data-multiple-dates-separator=" - " placeholder="ДД.ММ.ГГГГ">
         </div>
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 pl-2">
           <label for="departure">Выезд</label>
           <input type="text" class="form-control" id="departure" placeholder="ДД.ММ.ГГГГ">
         </div>
@@ -76,6 +76,7 @@ input::placeholder {
   left: 9%;
   padding: 30px;
   padding-top: 40px;
+  z-index: 1;
 }
 .book-btn {
   width: 100%;
@@ -95,6 +96,39 @@ input::placeholder {
   img {
     position: absolute;
     right: 5%;
+  }
+}
+
+@media (max-width: 1170px) {
+  .room-booking {
+    width: 30%;
+  }
+}
+@media (max-width: 1000px) {
+  .room-booking {
+    width: 40%;
+  }
+}
+@media (max-width: 721px) {
+  .room-booking {
+    width: 50%;
+  }
+}
+@media (max-width: 710px) {
+  .room-booking {
+    width: 80%;
+  }
+}
+@media (max-width: 441px) {
+  .room-booking {
+    width: 80%;
+    top: 12%;
+  }
+}
+@media (max-width: 375px) {
+  .room-booking {
+    width: 80%;
+    top: 15%;
   }
 }
 </style>
