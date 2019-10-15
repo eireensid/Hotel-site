@@ -12,7 +12,7 @@ import RoomsList from './choose-room/RoomsList.vue'
 import footerComponent from './footer.vue'
 
 export default {
-  name: 'RoomList-layout',
+  name: 'RoomsListLayout',
   components: {
     headerComponent, RoomsList, footerComponent
   }

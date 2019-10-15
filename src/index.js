@@ -13,6 +13,8 @@ import 'air-datepicker/dist/css/datepicker.min.css'
 // SCSS
 import './assets/scss/main.scss'
 
+import App from './components/App.vue'
+
 // CSS (example)
 // import './assets/css/main.css'
 
@@ -23,10 +25,20 @@ window.Vue = require('vue')
 Vue.component('example-component', require('./components/Example.vue').default)
 
 // Vue init
-const app = new Vue({
-  el: '#app'
-})
+// const app = new Vue({
+//   el: '#app'
+// })
+
+// Router
+import router from './router'
+
+new Vue({
+  router,
+  render: h => h(App)
+}).$mount('#app')
 
 // Bootstrap
 import 'bootstrap/dist/js/bootstrap.min.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+
