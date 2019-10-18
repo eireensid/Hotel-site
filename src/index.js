@@ -32,8 +32,12 @@ Vue.component('example-component', require('./components/Example.vue').default)
 // Router
 import router from './router'
 
+// Store
+import store from './store'
+
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
 

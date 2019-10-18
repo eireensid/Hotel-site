@@ -287,6 +287,7 @@ export default {
     position: absolute;
     right: 23%;
     bottom: 35%;
+    height: 9px;
   }
   img.expand_more_1 {
     position: absolute;

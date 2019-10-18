@@ -39,13 +39,22 @@ export default {
   components: {
     GuestsInput
   },
+  computed: {
+    startDates () {
+      return this.$store.getters.startDates
+    }
+  },
   mounted () {
-    $('#arrive').datepicker({ 
-      onSelect: function (fd, d, picker) { 
+    console.log('mounted', this.startDates)
+    $('#arrive').datepicker({
+      onSelect: (fd, d, picker) => {
+        this.$store.commit('setStartDates', d)
         $("#arrive").val(fd.split("-")[0])
         $("#departure").val(fd.split("-")[1])
       }
     })
+
+    $('#arrive').data('datepicker').selectDate(this.startDates)
   }
 }
 </script>

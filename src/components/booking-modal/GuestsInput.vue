@@ -19,9 +19,9 @@
                     </div>
                     <div class="col-4 plus-minus plus-minus-bottom">
                       <img v-if="adultsCount == 0" src="/assets/img/minus-disabled.png" class="counter-right"/>
-                      <img v-else src="/assets/img/minus.png" @click="countAdults()" class="counter-right"/>
+                      <img v-else src="/assets/img/minus.png" @click="minusAdults()" class="counter-right"/>
                       <span class="guests">{{ adultsCount }}</span>
-                      <img src="/assets/img/plus.png" @click="adultsCount++" class="counter-left"/>
+                      <img src="/assets/img/plus.png" @click="plusAdults" class="counter-left"/>
                     </div>
                   </div>
                   <div class="row">
@@ -30,9 +30,9 @@
                     </div>
                     <div class="col-4 plus-minus plus-minus-bottom">
                       <img v-if="childrenCount == 0" src="/assets/img/minus-disabled.png" class="counter-right"/>
-                      <img v-else src="/assets/img/minus.png" @click="countChildren()" class="counter-right"/>
+                      <img v-else src="/assets/img/minus.png" @click="minusChildren()" class="counter-right"/>
                       <span class="guests">{{ childrenCount }}</span>
-                      <img src="/assets/img/plus.png" @click="childrenCount++" class="counter-left"/>
+                      <img src="/assets/img/plus.png" @click="plusChildren" class="counter-left"/>
                     </div>
                   </div>
                   <div class="row">
@@ -41,9 +41,9 @@
                     </div>
                     <div class="col-4 plus-minus">
                       <img v-if="babiesCount == 0" src="/assets/img/minus-disabled.png" class="counter-right"/>
-                      <img v-else src="/assets/img/minus.png" @click="countBabies()" class="counter-right"/>
+                      <img v-else src="/assets/img/minus.png" @click="minusBabies()" class="counter-right"/>
                       <span class="guests">{{ babiesCount }}</span>
-                      <img src="/assets/img/plus.png" @click="babiesCount++" class="counter-left"/>
+                      <img src="/assets/img/plus.png" @click="plusBabies" class="counter-left"/>
                     </div>
                   </div>
                   <div class="row">
@@ -70,13 +70,19 @@ export default {
   name: 'GuestsInput',  
   data () {
     return {
-      adultsCount: 0,
-      childrenCount: 0,
-      babiesCount: 0,
       dropdownVisible: false
     }
   }, 
   computed: {
+    adultsCount () {
+      return this.$store.getters.adultsCount
+    },
+    childrenCount () {
+      return this.$store.getters.childrenCount
+    },
+    babiesCount () {
+      return this.$store.getters.babiesCount
+    },
     sumCount () {
       return this.adultsCount + this.childrenCount + this.babiesCount
     },
@@ -106,25 +112,26 @@ export default {
     }
   },
   methods: {
-    countAdults () {
-      if (this.adultsCount > 0) {
-        this.adultsCount--
-      }
+    plusAdults () {
+      this.$store.commit('plusAdults')
     },
-    countChildren () {
-      if (this.childrenCount > 0) {
-        this.childrenCount--
-      }
+    plusChildren () {
+      this.$store.commit('plusChildren')
     },
-    countBabies () {
-      if (this.babiesCount > 0) {
-        this.babiesCount--
-      }
+    plusBabies () {
+      this.$store.commit('plusBabies')
+    },
+    minusAdults () {
+      this.$store.commit('minusAdults')
+    },
+    minusChildren () {
+      this.$store.commit('minusChildren')
+    },
+    minusBabies () {
+      this.$store.commit('minusBabies')
     },
     clearAll () {
-      this.adultsCount = 0
-      this.childrenCount = 0
-      this.babiesCount = 0
+      this.$store.commit('clearAll')
     }
   }
 }
